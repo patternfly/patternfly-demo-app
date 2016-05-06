@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Patternfly Demo App</title>
+
+    <!-- PatternFly Styles -->
+    <!-- Note: No other CSS files are needed regardless of what other JS packages located in patternfly/components that you decide to pull in -->
+    <link rel="stylesheet" href="node_modules/patternfly/dist/css/patternfly.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- jQuery -->
+    <script src="node_modules/patternfly/node_modules/jquery/dist/jquery.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="node_modules/patternfly/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- C3, D3 - Charting Libraries -->
+    <script src="node_modules/patternfly/node_modules/c3/c3.min.js"></script>
+    <script src="node_modules/patternfly/node_modules/c3/node_modules/d3/d3.min.js"></script>
+
+    <!-- Datatables, jQuery Grid Component -->
+    <!-- Note: jquery.dataTables.js must occur in the html source before patternfly*.js.-->
+    <script src="node_modules/patternfly/node_modules/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="node_modules/patternfly/node_modules/drmonty-datatables-colvis/js/dataTables.colVis.js"></script>
+    <script src="node_modules/patternfly/node_modules/datatables.net-colreorder/js/dataTables.colReorder.js"></script>
+
+    <!-- PatternFly Custom Componets -  Sidebar, Popovers and Datatables Customizations -->
+    <!-- Note: jquery.dataTables.js must occur in the html source before patternfly*.js.-->
+    <script src="node_modules/patternfly/dist/js/patternfly.min.js"></script>
+
+    <!-- Bootstrap Combobox -->
+    <script src="node_modules/patternfly/node_modules/patternfly-bootstrap-combobox/js/bootstrap-combobox.js"></script>
+
+    <!-- Bootstrap Date Picker -->
+    <script src="node_modules/patternfly/node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+    <!-- Bootstrap Date Time Picker - requires Moment -->
+    <script src="node_modules/patternfly/node_modules/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+
+    <!-- Bootstrap Select -->
+    <script src="node_modules/patternfly/node_modules/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+
+    <!-- Bootstrap Touchspin -->
+    <script src="node_modules/patternfly/node_modules/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
+
+    <!-- Bootstrap Tree View -->
+    <script src="node_modules/patternfly/node_modules/bootstrap-treeview/dist/bootstrap-treeview.min.js"></script>
+
+    <!-- Google Code Prettify - Syntax highlighting of code snippets -->
+    <script src="node_modules/patternfly/node_modules/google-code-prettify/bin/prettify.min.js"></script>
+
+    <!-- MatchHeight - Used to make sure dashboard cards are the same height -->
+    <script src="node_modules/patternfly/node_modules/jquery-match-height/jquery.matchHeight-min.js"></script>
+
+    <!-- Moment - required by Bootstrap Date Time Picker -->
+    <script src="node_modules/patternfly/node_modules/moment/min/moment.min.js"></script>
+
+    <!-- Angular Application? You May Want to Consider Pulling Angular-PatternFly And Angular-UI Bootstrap instead of bootstrap.js -->
+    <!-- See https://github.com/patternfly/angular-patternfly for more information -->
+
+  </head>
+  <body>
+
+<!-- nav -->
+<nav class="navbar navbar-default navbar-pf" role="navigation">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      <img src="node_modules/patternfly/dist/img/brand.svg" alt="Patternfly Demo App" />
+    </a>
+  </div>
+  <div class="collapse navbar-collapse navbar-collapse-1">
+    <ul class="nav navbar-nav navbar-utility">
+      <li>
+        <a href="#">Status</a>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <span class="pficon pficon-user"></span>
+          Brian Johnson <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <li>
+            <a href="#">Settings</a>
+          </li>
+          <li>
+            <a href="#">Another link</a>
+          </li>
+          <li>
+            <a href="#">Something else here</a>
+          </li>
+          <li class="divider"></li>
+          <li class="dropdown-submenu">
+            <a tabindex="-1" href="#">More options</a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="#">Link</a>
+              </li>
+              <li>
+                <a href="#">Another link</a>
+              </li>
+              <li>
+                <a href="#">Something else here</a>
+              </li>
+              <li class="divider"></li>
+              <li class="dropdown-header">Nav header</li>
+              <li>
+                <a href="#">Separated link</a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="#">One more separated link</a>
+              </li>
+            </ul>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a href="login.html">Logout</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-primary">
+      <li>
+        <a href="index.html">Dashboard</a>
+      </li>
+      <li>
+        <a href="list.html">List Page</a>
+      </li>
+      <li class="active">
+        <a href="empty.html">Empty Page</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container-fluid">
+
+    <div class="row">
+      <div class="col-md-12">
+
+
+        <div class="page-header page-header-bleed-right">
+          <h1>Main Title</h1>
+        </div>
+
+        <div class="blank-slate-pf">
+          <div class="blank-slate-pf-icon">
+            <i class="fa fa-rocket"></i>
+          </div>
+          <h1>Empty State Title</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <p>Learn more about this <a href="#">on the documentation</a>.</p>
+          <div class="blank-slate-pf-main-action">
+            <button class="btn btn-primary btn-lg">
+              Main Action
+            </button>
+          </div>
+          <div class="blank-slate-pf-secondary-action">
+            <button class="btn btn-default">
+              Secondary Action
+            </button>
+            <button class="btn btn-default">
+              Secondary Action
+            </button>
+            <button class="btn btn-default">
+              Secondary Action
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+
+  </div>
+</div><!-- container -->
+
+
+  </body>
+</html>
