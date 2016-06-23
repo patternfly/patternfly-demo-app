@@ -1,0 +1,28 @@
+{
+  "name": "patternfly-demo-app",
+  "version": "1.0.0",
+  "description": "Patternfly demo app",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "browser-sync": "^2.12.5",
+    "gulp": "^3.9.1",
+    "gulp-less": "^3.1.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-uglify": "^1.5.3",
+    "patternfly": "^3.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andresgalante/patternfly-demo-app.git"
+  },
+  "author": "Andres Galante",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andresgalante/patternfly-demo-app/issues"
+  },
+  "homepage": "https://github.com/andresgalante/patternfly-demo-app#readme"
+}
