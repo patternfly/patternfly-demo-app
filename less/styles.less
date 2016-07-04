@@ -1,6 +1,12 @@
+@import "../node_modules/patternfly/less/patternfly.less";
 @import "../node_modules/patternfly/less/patternfly-additions.less";
 
-@fa-font-path:      "../node_modules/patternfly/components/font-awesome/fonts/";
-@icon-font-path:    "../node_modules/patternfly/components/bootstrap/fonts/";
-@font-path:         "../node_modules/patternfly/dist/fonts";
-@img-path:          "../node_modules/patternfly/dist/img";
+//webpack will use path of the imported less file
+@fa-font-path:         "../../../node_modules/font-awesome/fonts/";
+@icon-font-path:       "../../../node_modules/bootstrap/fonts/";
+@font-path:            "../dist/fonts";
+@img-path:             "../dist/img";
+
+//if importing webpack less instead of css, override patternfly image paths for the webpack bundler
+@navbar-pf-alt-bg-img: "node_modules/patternfly/dist/img/bg-navbar-pf-alt.svg";
+
