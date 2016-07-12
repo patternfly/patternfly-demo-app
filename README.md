@@ -29,7 +29,7 @@ For production, you will want to compile your webpack bundle.
 webpack -p --config webpack.config.js
 ```
 
-The resulting build will be in the [webpack-build](webpack-build) folder.
+The resulting build will be in the [dist](dist) folder.
 
 
 #### Webpack dev notes
@@ -38,28 +38,37 @@ via the [extract-text plugin](https://github.com/webpack/extract-text-webpack-pl
 
 Note that images and fonts referenced in your css are automatically copied via webpack [url-loader](https://github.com/webpack/url-loader).
 
-You will want to copy any html or html images *<img>* to your *dist* folder via the [copy-webpack plugin](https://github.com/kevlened/copy-webpack-plugin). An
+You will want to copy any html or images that are referenced in html *<img>* tags to your *dist* folder via the [copy-webpack plugin](https://github.com/kevlened/copy-webpack-plugin). An
 alternative is to source images in your js/jsx templates and [html-loader](https://github.com/webpack/html-loader) can compress them.
 
 ```
         new CopyWebpackPlugin([
             {
-                from: { glob:'./*.html'},
-                to: './'
+                from: { glob:'./src/html/*.html'},
+                to: './',
+                flatten: true
             },
             {
                 from: { glob: 'node_modules/patternfly/dist/img/*.*'},
-                to: './'
+                to: './img',
+                flatten: true
             }
         ]),
 ```
 
 #### WebpackDevServer / Hot Module Replacement
-Prefer using the [webpack-dev-server](https://webpack.github.io/docs/webpack-dev-server.html) with [hmr](https://webpack.github.io/docs/hot-module-replacement.html)?
+This project makes use of [webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware) with [hmr](https://webpack.github.io/docs/hot-module-replacement.html).
 
-We've got you covered. Just run:
+While developing and making to changes to `src` files, you should see changes propogate immediately to the browser. Files are also updated in the `dist` folder via the [write-file-plugin](write-file-webpack-plugin).
+
+**Note:** you can gitignore webpack incremental updates. These are written to `dist/hot`. You can read more about this [here](http://code.fitness/post/2016/02/webpack-public-path-and-hot-reload.html).
+
+#### Having trouble with Webpack?
+Given it is a new technology, there is certainly room for error. You can sometimes trace more error info with the `--display-error-details` arg:
 ```
-npm run start:hmr
+webpack -p --config build/webpack.config.js --display-error-details
 ```
 
-and point to your server at [http://localhost:8080/](http://localhost:8080/)
+There are some more helpful debugging tips [here](http://webpack.github.io/docs/troubleshooting.html). 
+
+If you are still having troubles, find us on [PatternFly Gitter](https://gitter.im/patternfly/patternfly) or ask someone in the [Webpack community](https://gitter.im/webpack/webpack).

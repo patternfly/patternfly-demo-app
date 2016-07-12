@@ -21,23 +21,23 @@
     "file-loader": "^0.9.0",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
+    "monkey-hot-loader": "0.0.3",
     "script-loader": "^0.7.0",
     "strip-ansi": "^3.0.0",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.10.5",
     "webpack-dev-middleware": "^1.2.0",
-    "webpack-dev-server": "^1.14.1"
+    "write-file-webpack-plugin": "^3.1.8"
   },
   "scripts": {
-    "start": "node app.js",
-    "start:hmr": "node app-hmr.js",
-    "clean": "rm -rf webpack-build/",
+    "start": "node server/app.js",
+    "clean": "rm -rf dist/*",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andresgalante/patternfly-demo-app.git"
+    "url": "git+https://github.com/patternfly/patternfly-demo-app.git"
   },
   "authors": [
     "Andres Galante <agalante@gmail.com> (https://github.com/andresgalante)",
@@ -45,7 +45,7 @@
   ],
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/andresgalante/patternfly-demo-app/issues"
+    "url": "https://github.com/patternfly/patternfly-demo-app/issues"
   },
-  "homepage": "https://github.com/andresgalante/patternfly-demo-app#readme"
+  "homepage": "https://github.com/patternfly/patternfly-demo-app#readme"
 }
