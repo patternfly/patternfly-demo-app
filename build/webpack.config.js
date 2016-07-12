@@ -11,20 +11,16 @@ module.exports = {
 
     devtool: 'source-map',
 
-    entry: [
-        'webpack/hot/dev-server',
-        'webpack-hot-middleware/client',
-        './src/js/main'
-    ],
-
-    devServer: {
-        outputPath: path.join(__dirname, '../dist')
+    entry: {
+        'main': './src/js/main',
+        'patternfly': './src/js/patternfly-css.js',
+        'patternfly-additions': './src/js/patternfly-additions-css.js'
     },
 
     output: {
         path: path.join(__dirname, '../dist'),
         publicPath: './',
-        filename: 'bundle.js',
+        filename: '[name].bundle.js',
         hotUpdateChunkFilename: 'hot/[id].[hash].hot-update.js',
         hotUpdateMainFilename: 'hot/[hash].hot-update.json'
     },
@@ -73,8 +69,7 @@ module.exports = {
         ]),
 
         //creates distribution css file rather than inlining styles
-        new ExtractTextPlugin("../dist/patternfly.css", {allChunks: false}),
-        new ExtractTextPlugin("../dist/patternfly-additions.css", {allChunks: false}),
+        new ExtractTextPlugin("[name].css", {allChunks: false}),
 
         //writes files on changes to src
         new WriteFilesPlugin()

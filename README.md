@@ -20,17 +20,26 @@ npm i
 ### Development
 For development with [BrowserSync](https://www.browsersync.io/) run:
 ```
+webpack --config build/webpack.config.js
 npm start
 ```
 
 ### Production
 For production, you will want to compile your webpack bundle.
 ```
-webpack -p --config webpack.config.js
+webpack -p --config build/webpack.config.js
 ```
 
 The resulting build will be in the [dist](dist) folder.
 
+### Optimizations
+All js references loaded in `js/main.js` will be chunked by webpack and loaded in a single file, `dist/main.bundle.js`. 
+
+CSS references are currently extracted in multiple entry points, `patternfly` and `patternfly-additions`. You can read more about using multiple entry points [here](https://webpack.github.io/docs/multiple-entry-points.html) and [here](https://github.com/webpack/webpack/tree/master/examples/multiple-entry-points-commons-chunk-css-bundle).
+This also ensures our IE support due to file length limitations on CSS files.
+
+Note that compiled css files may appear larger - however this may be misleading to Webpack newcomers. The webpack configuration in this project will automatically
+trace any inline images and fonts and inject them inline, saving you costly network requests in your production app. 
 
 #### Webpack dev notes
 All css/less/js dependencies optimized by webpack should be placed in [scripts/main.js](scripts/main.js). Less/css is written to a file
@@ -59,7 +68,7 @@ alternative is to source images in your js/jsx templates and [html-loader](https
 #### WebpackDevServer / Hot Module Replacement
 This project makes use of [webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware) with [hmr](https://webpack.github.io/docs/hot-module-replacement.html).
 
-While developing and making to changes to `src` files, you should see changes propogate immediately to the browser. Files are also updated in the `dist` folder via the [write-file-plugin](write-file-webpack-plugin).
+While developing and making to changes to `src` files, you should see changes propagate immediately to the browser. Files are also updated in the `dist` folder via the [write-file-plugin](write-file-webpack-plugin).
 
 **Note:** you can gitignore webpack incremental updates. These are written to `dist/hot`. You can read more about this [here](http://code.fitness/post/2016/02/webpack-public-path-and-hot-reload.html).
 
@@ -68,6 +77,8 @@ Given it is a new technology, there is certainly room for error. You can sometim
 ```
 webpack -p --config build/webpack.config.js --display-error-details
 ```
+
+Also, there is a wonderful collection of detailed examples in the webpack project [here](https://github.com/webpack/webpack/tree/master/examples). 
 
 There are some more helpful debugging tips [here](http://webpack.github.io/docs/troubleshooting.html). 
 
