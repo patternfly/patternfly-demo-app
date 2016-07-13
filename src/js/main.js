@@ -1,7 +1,4 @@
-//PatternFly Styles
-//Note: No other CSS files are needed regardless of what other JS packages located in patternfly/components that you decide to pull in
-require('../less/patternfly.less');
-require('../less/patternfly-additions.less');
+//PatternFly JS Dependencies Entry
 
 //jQuery
 //execute files in global context with script-loader: https://github.com/webpack/script-loader
