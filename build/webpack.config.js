@@ -13,8 +13,8 @@ module.exports = {
 
     entry: {
         'main': './src/js/main',
-        'patternfly': './src/js/patternfly-css.js',
-        'patternfly-additions': './src/js/patternfly-additions-css.js'
+        'charts': './src/js/charts',
+        'custom': './src/js/custom'
     },
 
     output: {
@@ -54,7 +54,7 @@ module.exports = {
             "window.jQuery": "jquery"
         }),
 
-        //copy html files to dist for demo app
+        //copy patternfly assets for demo app
         new CopyWebpackPlugin([
             {
                 from: { glob:'./src/html/*.html'},
@@ -64,6 +64,16 @@ module.exports = {
             {
                 from: { glob: './node_modules/patternfly/dist/img/*.*'},
                 to: './img',
+                flatten: true
+            },
+            {
+                from: { glob: './node_modules/patternfly/dist/fonts/*.*'},
+                to: './fonts',
+                flatten: true
+            },
+            {
+                from: { glob: './node_modules/patternfly/dist/css/*.*'},
+                to: './css',
                 flatten: true
             }
         ]),
@@ -93,7 +103,7 @@ module.exports = {
                 }
             },
 
-            // bundle LESS and CSS into a single CSS file, auto-generating -vendor-prefixes
+            // bundle LESS and CSS auto-generating -vendor-prefixes
             {
                 test: /\.css$/,
                 loader: ExtractTextPlugin.extract("style-loader", "css-loader?sourceMap")
