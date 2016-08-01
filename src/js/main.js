@@ -7,10 +7,6 @@ require('script!../../node_modules/patternfly/node_modules/jquery/dist/jquery.mi
 //Bootstrap JS
 require('../../node_modules/patternfly/node_modules/bootstrap/dist/js/bootstrap.min');
 
-//C3, D3 Charting Libraries
-require('script!../../node_modules/patternfly/node_modules/c3/c3.min');
-require('script!../../node_modules/patternfly/node_modules/c3/node_modules/d3/d3.min');
-
 //Datatables, jQuery Grid Component
 require('../../node_modules/patternfly/node_modules/datatables/media/js/jquery.dataTables.min');
 require('../../node_modules/patternfly/node_modules/drmonty-datatables-colvis/js/dataTables.colVis');

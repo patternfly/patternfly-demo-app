@@ -32,21 +32,22 @@ webpack -p --config build/webpack.config.js
 
 The resulting build will be in the [dist](dist) folder.
 
-### Optimizations
-All js references loaded in `js/main.js` will be chunked by webpack and loaded in a single file, `dist/main.bundle.js`. 
+### Extending the Demo App
 
-CSS references are currently extracted in multiple entry points, `patternfly` and `patternfly-additions`. You can read more about using multiple entry points [here](https://webpack.github.io/docs/multiple-entry-points.html) and [here](https://github.com/webpack/webpack/tree/master/examples/multiple-entry-points-commons-chunk-css-bundle).
-This also ensures our IE support due to file length limitations on CSS files.
+#### JS
+All js references loaded in `src/js/main.js` will be chunked by webpack and loaded in a single file, `dist/main.bundle.js`. Feel free to add your own JS scripts and `require` them in the bundle.
+ 
+If you would like to add `d3.js` or `c3.js` charts to your page, include the `charts` bundle in `dist/charts.bundle.js`.
 
-Note that compiled css files may appear larger - however this may be misleading to Webpack newcomers. The webpack configuration in this project will automatically
-trace any inline images and fonts and inject them inline, saving you costly network requests in your production app. 
+#### HTML
+All HTML documents added to [src/html](src/html) are copied as-is to the `dist` folder.
+
+#### CSS/LESS
+Less/css is written to a file via the [extract-text plugin](https://github.com/webpack/extract-text-webpack-plugin). You can write any custom less in `src/less/custom.less` and it will be compiled to `dist/custom.css` which can be referenced in your HTML.
+
+Note that images and fonts referenced in your custom css are automatically inlined via webpack [url-loader](https://github.com/webpack/url-loader).
 
 #### Webpack dev notes
-All css/less/js dependencies optimized by webpack should be placed in [scripts/main.js](scripts/main.js). Less/css is written to a file
-via the [extract-text plugin](https://github.com/webpack/extract-text-webpack-plugin). This will remove any inline css from bundle.js.
-
-Note that images and fonts referenced in your css are automatically copied via webpack [url-loader](https://github.com/webpack/url-loader).
-
 You will want to copy any html or images that are referenced in html *<img>* tags to your *dist* folder via the [copy-webpack plugin](https://github.com/kevlened/copy-webpack-plugin). An
 alternative is to source images in your js/jsx templates and [html-loader](https://github.com/webpack/html-loader) can compress them.
 
@@ -65,10 +66,10 @@ alternative is to source images in your js/jsx templates and [html-loader](https
         ]),
 ```
 
-#### WebpackDevServer / Hot Module Replacement
-This project makes use of [webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware) with [hmr](https://webpack.github.io/docs/hot-module-replacement.html).
-
+#### WebpackDevMiddleware / Hot Module Replacement
 While developing and making to changes to `src` files, you should see changes propagate immediately to the browser. Files are also updated in the `dist` folder via the [write-file-plugin](write-file-webpack-plugin).
+
+**Note:** New files will not be included automatically - you must restart your server with `npm start`.
 
 **Note:** you can gitignore webpack incremental updates. These are written to `dist/hot`. You can read more about this [here](http://code.fitness/post/2016/02/webpack-public-path-and-hot-reload.html).
 
