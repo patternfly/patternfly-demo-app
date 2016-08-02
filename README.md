@@ -6,6 +6,10 @@ The PatternFly demo app serves as a boiler for building your production app with
 ![Image of NodeJS](http://www.devsensation.es/sites/default/files/styles/large/public/field/image/nodejs-logo.png?itok=URP6hUpT)
 ![Image of Webpack](https://avatars0.githubusercontent.com/webpack?&s=256)
 
+## Demo
+The main demo can be found [here](https://rawgit.com/patternfly/patternfly-demo-app/master/dist/index.html). There is a sample [login](https://rawgit.com/patternfly/patternfly-demo-app/master/dist/login.html) page as well.
+
+### Installation
 Install webpack globally:
 
 ```
