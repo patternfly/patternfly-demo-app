@@ -35,7 +35,7 @@ require('../../node_modules/patternfly/node_modules/bootstrap-select/dist/js/boo
 require('../../node_modules/patternfly/node_modules/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min');
 
 //Bootstrap Tree View
-require('../../node_modules/patternfly/node_modules/bootstrap-treeview/dist/bootstrap-treeview.min');
+require('../../node_modules/patternfly-bootstrap-treeview/dist/bootstrap-treeview.min');
 
 //Google Code Prettify - Syntax highlighting of code snippets
 require('../../node_modules/patternfly/node_modules/google-code-prettify/bin/prettify.min');
