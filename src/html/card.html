@@ -9,12 +9,10 @@
     <link rel="stylesheet" href="css/patternfly-additions.min.css">
     <style>
       /*JENN - included styles to enable drilldown behavior to a contents/details page; only the first record demonstrates this behavior  */
-      .card-pf-view {display:block;}
+      .card-pf-view {display:block;} /*needed if div is changed to <a> */
       .card-pf-view.jenn-test {pointer-events:none;}
       .card-pf-view.jenn-test a, .card-pf-view.jenn-test input, .card-pf-view.jenn-test button {pointer-events: auto; z-index:0; position:relative;}
-
-      /*JENN - included table icon (created new class for table icon)  */
-      .fa-th-table:before {content: "\f0ce";}
+      .card-pf-view.jenn-test .card-pf-view-link {position:absolute; top:0; right:0; bottom:0; left:0;pointer-events:auto;}
 
     </style>
     <!-- webpack bundled dependencies -->
@@ -176,7 +174,7 @@
                 </div>
                 <div class="form-group toolbar-pf-view-selector">
                   <ul class="list-inline">
-                    <li><a href="#" title="Table View"><i class="fa fa-th-table"></i></a></li>
+                    <li><a href="#" title="Table View"><i class="fa fa-table"></i></a></li>
                     <li class="active"><a href="#" title="Card View"><i class="fa fa-th"></i></a></li>
                     <li><a href="list.html" title="List View"><i class="fa fa-th-list"></i></a></li>
                   </ul>
@@ -233,7 +231,7 @@
       <div class="row row-cards-pf">
         <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
     <div class="card-pf card-pf-view card-pf-view-select card-pf-view-multi-select jenn-test">
-      <a href="details.html" style="position:absolute; top:0; right:0; bottom:0; left:0;pointer-events:auto;"></a>
+      <a href="details.html" class="card-pf-view-link"></a>
       <div class="card-pf-body">
         <div class="card-pf-top-element">
           <span class="fa fa-birthday-cake card-pf-icon-circle"></span>
