@@ -4,7 +4,9 @@
   "description": "Patternfly demo app",
   "main": "gulpfile.js",
   "dependencies": {
-    "patternfly": "~3.7.0"
+    "d3": "^4.2.2",
+    "patternfly": "~3.9.0",
+    "patternfly-bootstrap-treeview": "^1.0.1"
   },
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",

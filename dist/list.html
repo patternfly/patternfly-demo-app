@@ -10,8 +10,9 @@
 
     <!-- webpack bundled dependencies -->
     <script src="main.bundle.js"></script>
+
   </head>
-  <body>
+<body>
 
 <!-- nav -->
 <nav class="navbar navbar-default navbar-pf" role="navigation">
@@ -131,25 +132,47 @@
             <button class="btn btn-default" type="button">Action</button>
             <button class="btn btn-default" type="button">Action</button>
             <div class="dropdown btn-group  dropdown-kebab-pf">
-<button class="btn btn-link dropdown-toggle" type="button" id="dropdownKebab" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-<span class="fa fa-ellipsis-v"></span>
-</button>
-<ul class="dropdown-menu " aria-labelledby="dropdownKebab">
-<li><a href="#">Action</a></li>
-<li><a href="#">Another action</a></li>
-<li><a href="#">Something else here</a></li>
-<li role="separator" class="divider"></li>
-<li><a href="#">Separated link</a></li>
-</ul>
-</div>
+              <button class="btn btn-link dropdown-toggle" type="button" id="dropdownKebab" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <span class="fa fa-ellipsis-v"></span>
+              </button>
+              <ul class="dropdown-menu " aria-labelledby="dropdownKebab">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </div>
 
           </div>
-          <div class="form-group toolbar-pf-view-selector">
-            <ul class="list-inline">
-              <li><a href="#"><i class="fa fa-th"></i></a></li>
-              <li class="active"><a href="#"><i class="fa fa-th-large"></i></a></li>
-              <li><a href="#"><i class="fa fa-th-list"></i></a></li>
-            </ul>
+          <div class="toolbar-pf-action-right">
+            <div class="form-group toolbar-pf-find">
+              <button class="btn btn-link btn-find" type="button">
+                <span class="fa fa-search"></span>
+              </button>
+              <div class="find-pf-dropdown-container">
+                <input type="text" class="form-control" id="find" placeholder="Find By Keyword...">
+                <div class="find-pf-buttons">
+                  <span class="find-pf-nums">1 of 3</span>
+                  <button class="btn btn-link" type="button">
+                    <span class="fa fa-angle-up"></span>
+                  </button>
+                  <button class="btn btn-link" type="button">
+                    <span class="fa fa-angle-down"></span>
+                  </button>
+                  <button class="btn btn-link btn-find-close" type="button">
+                    <span class="pficon pficon-close"></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="form-group toolbar-pf-view-selector">
+              <ul class="list-inline">
+                <li><a href="#" title="Table View"><i class="fa fa-table"></i></a></li>
+                <li><a href="card.html" title="Card View"><i class="fa fa-th"></i></a></li>
+                <li class="active"><a href="#" title="List View"><i class="fa fa-th-list"></i></a></li>
+              </ul>
+            </div>
           </div>
         </form>
         <div class="row toolbar-pf-results">
@@ -197,7 +220,8 @@
 
       <div class="list-group list-view-pf">
 
-        <div class="list-group-item">
+        <div data-link="details.html" class="list-group-item">
+          <a href="details.html" class="list-group-item-link"></a>
           <div class="list-view-pf-checkbox">
             <input type="checkbox">
           </div>
@@ -250,7 +274,7 @@
           </div>
         </div><!-- list-group-item -->
 
-        <div class="list-group-item">
+        <div data-link="details.html" class="list-group-item">
           <div class="list-view-pf-checkbox">
             <input type="checkbox">
           </div>
@@ -303,7 +327,7 @@
           </div>
         </div><!-- list-group-item -->
 
-        <div class="list-group-item">
+        <div data-link="details.html" class="list-group-item">
           <div class="list-view-pf-checkbox">
             <input type="checkbox">
           </div>
@@ -356,7 +380,7 @@
           </div>
         </div><!-- list-group-item -->
 
-        <div class="list-group-item">
+        <div data-link="details.html" class="list-group-item">
           <div class="list-view-pf-checkbox">
             <input type="checkbox">
           </div>
@@ -409,7 +433,7 @@
           </div>
         </div><!-- list-group-item -->
 
-        <div class="list-group-item">
+        <div data-link="details.html" class="list-group-item">
           <div class="list-view-pf-checkbox">
             <input type="checkbox">
           </div>
@@ -462,7 +486,7 @@
           </div>
         </div><!-- list-group-item -->
 
-        <div class="list-group-item">
+        <div data-link="details.html" class="list-group-item">
           <div class="list-view-pf-checkbox">
             <input type="checkbox">
           </div>
@@ -515,7 +539,7 @@
           </div>
         </div><!-- list-group-item -->
 
-        <div class="list-group-item">
+        <div data-link="details.html" class="list-group-item">
           <div class="list-view-pf-checkbox">
             <input type="checkbox">
           </div>
@@ -568,7 +592,7 @@
           </div>
         </div><!-- list-group-item -->
 
-        <div class="list-group-item">
+        <div data-link="details.html" class="list-group-item">
           <div class="list-view-pf-checkbox">
             <input type="checkbox">
           </div>
@@ -621,7 +645,7 @@
           </div>
         </div><!-- list-group-item -->
 
-        <div class="list-group-item">
+        <div data-link="details.html" class="list-group-item">
           <div class="list-view-pf-checkbox">
             <input type="checkbox">
           </div>
@@ -688,7 +712,22 @@
         $(this).closest('.list-group-item').removeClass("active");
       }
     });
+
+    // Row navigation to contents/details page
+    $(".list-group-item").click(function(e){
+      var target = e.target;
+      //check if clicked element is a div, and not <a>, button or input
+      if($(target).is('div')) {
+        window.location = $(this).data("link");
+      }
+    });
+
+
   });
+
+
+
+
 </script>
 
 
