@@ -2,11 +2,9 @@
   "name": "patternfly-demo-app",
   "version": "1.0.0",
   "description": "Patternfly demo app",
-  "main": "gulpfile.js",
+  "main": "server/app.js",
   "dependencies": {
-    "d3": "^4.2.2",
-    "patternfly": "~3.9.0",
-    "patternfly-bootstrap-treeview": "^1.0.1"
+    "patternfly": "3.11.0"
   },
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",
@@ -34,7 +32,9 @@
     "write-file-webpack-plugin": "^3.1.8"
   },
   "scripts": {
-    "start": "node server/app.js",
+    "build:dev": "webpack --config build/webpack.config.js",
+    "build:prod": "webpack -p --config build/webpack.config.js",
+    "start": "npm run build:dev && node server/app.js",
     "clean": "rm -rf dist/*",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
