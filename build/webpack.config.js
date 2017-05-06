@@ -7,7 +7,6 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var WriteFilesPlugin = require('write-file-webpack-plugin');
 
 module.exports = {
-    debug: true,
 
     devtool: 'source-map',
 
@@ -33,16 +32,12 @@ module.exports = {
 
     plugins: [
         // Avoid publishing files when compilation failed:
-        new webpack.NoErrorsPlugin(),
+        new webpack.NoEmitOnErrorsPlugin(),
 
-        //optimizes webpack id order
-        new webpack.optimize.OccurenceOrderPlugin(),
+        //optimizes webpack id order OccurrenceOrderPlugin enabled by default
 
         //HMR
         new webpack.HotModuleReplacementPlugin(),
-
-        // Remove duplicate modules (should they occur):
-        new webpack.optimize.DedupePlugin(),
 
         //make webpack ignore moment locale require: https://github.com/moment/moment/issues/2517
         new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
@@ -79,14 +74,21 @@ module.exports = {
         ]),
 
         //creates distribution css file rather than inlining styles
-        new ExtractTextPlugin("[name].css", {allChunks: false}),
+        new ExtractTextPlugin({
+            filename: "[name].css",
+            allChunks: false
+        }),
 
         //writes files on changes to src
-        new WriteFilesPlugin()
+        new WriteFilesPlugin(),
+
+        new webpack.LoaderOptionsPlugin({
+            debug: true
+        })
     ],
 
     module: {
-        loaders: [
+        rules: [
             //js loader
             {
                 loader: "babel-loader",
@@ -106,11 +108,32 @@ module.exports = {
             // bundle LESS and CSS auto-generating -vendor-prefixes
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract("style-loader", "css-loader?sourceMap")
+                loader: ExtractTextPlugin.extract({
+                    fallback:"style-loader",
+                    use: [
+                        { loader: 'css-loader', options: { sourceMap: true } },
+                    ]
+                })
             },
             {
                 test: /\.less$/,
-                loader: ExtractTextPlugin.extract("style-loader", "css-loader?sourceMap!autoprefixer-loader!less-loader")
+                loader: ExtractTextPlugin.extract({
+                    fallback:"style-loader",
+                    use: [
+                        { loader: 'css-loader', options: { sourceMap: true, importLoaders: 1 } },
+                        {
+                            loader: 'postcss-loader',
+                            options: {
+                                plugins: () => {
+                                    return [
+                                        require('autoprefixer')
+                                    ]
+                                }
+                            }
+                        },
+                        { loader: 'less-loader', options: { sourceMap: true } }
+                    ]
+                })
             },
 
             //font/image url loaders
@@ -138,6 +161,12 @@ module.exports = {
                 test: /\.(png|jpe?g|gif)(\?\S*)?$/,
                 loader: 'url?limit=100000&name=[name].[ext]'
             }
+        ]
+    },
+    resolve: {
+        modules: [
+            "node_modules/patternfly/node_modules",
+            "node_modules"
         ]
     }
 };

@@ -2,7 +2,7 @@
 
 //jQuery
 //execute files in global context with script-loader: https://github.com/webpack/script-loader
-require('script!jquery/dist/jquery.min');
+require('script-loader!jquery/dist/jquery.min');
 
 //Bootstrap JS
 require('bootstrap/dist/js/bootstrap.min');
@@ -41,7 +41,7 @@ require('patternfly-bootstrap-treeview/dist/bootstrap-treeview.min');
 require('google-code-prettify/bin/prettify.min');
 
 //MatchHeight - Used to make sure dashboard cards are the same height
-require('jquery-match-height/jquery.matchHeight-min');
+require('jquery-match-height/dist/jquery.matchHeight-min');
 
 //Angular Application? You May Want to Consider Pulling Angular-PatternFly And Angular-UI Bootstrap instead of bootstrap.js
 //See https://github.com/patternfly/angular-patternfly for more information
